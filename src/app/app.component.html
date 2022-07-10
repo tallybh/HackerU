@@ -1,0 +1,36 @@
+<div class="main-div">
+  <mat-form-field appearance="fill">
+    <mat-label>Languages</mat-label>
+    <mat-select  [value]="allLanguage.id"   (selectionChange)="onLanguageChange($event)">
+      <mat-option *ngFor="let language of languages" [value]="language.id">
+        {{language.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-table class="mat-elevation-z8 table" [dataSource]="filterdLecturers">
+    
+    <ng-container matColumnDef="id">
+        <div class="mat-column-id"  *matHeaderCellDef>#</div>
+        <div class="mat-column-id" *matCellDef="let lecturer">{{lecturer.id}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+        <div class="mat-column-name" *matHeaderCellDef>Name</div>
+        <div class="mat-column-name"
+                  *matCellDef="let lecturer">{{lecturer.name}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+        <div class="mat-column-email" *matHeaderCellDef>Email</div>
+        <div class="mat-column-email"
+                  *matCellDef="let lecturer">{{lecturer.email}}</div>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+  </mat-table>
+  
+</div>
